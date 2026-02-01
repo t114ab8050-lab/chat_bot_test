@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: line-bot-python
+    env: python
+    region: singapore # 建議選新加坡 (singapore) 或奧勒岡 (oregon)，連線台灣較快
+    plan: free        # 指定使用免費方案
+    
+    # 建置指令：對應你的 requirements.txt
+    buildCommand: pip install -r requirements.txt
+    
+    # 啟動指令：對應你的 app.py 內的 app 物件
+    # gunicorn <檔名>:<物件名>
+    startCommand: gunicorn app:app
+    
+    # 自動偵測環境變數
+    envVars:
+      - key: SV5hlL1NXD9QOzbKSXF5Hzk6+AOo+dAwtEaSOHz9IBDcpSEnoEoXJ2VCUjBQHa8sX6EWknwS18mRoBGyomAIaWJQnirilGEV1t/C8zth8rTP71UajtdrXtTDh40Yk+i0N7Hw2wcZ5rS24HiJcFkBkAdB04t89/1O/w1cDnyilFU=
+        sync: false # false 代表不直接寫在這裡，Render 會在部署時要求你輸入，比較安全
+      - key: CHANNEL_SECRET
+        sync: false
+      - key: 2e9e73781d0e66c8e92fed2aa050c3bb
+        value: 3.10.12 # 指定 Python 版本，建議明確指定
