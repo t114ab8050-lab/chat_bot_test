@@ -15,8 +15,8 @@ app = Flask(__name__)
 
 # 從環境變數中讀取設定
 # 請在 Heroku 的 Settings -> Config Vars 中設定這些變數
-line_bot_api = LineBotApi(os.environ.get('SV5hlL1NXD9QOzbKSXF5Hzk6+AOo+dAwtEaSOHz9IBDcpSEnoEoXJ2VCUjBQHa8sX6EWknwS18mRoBGyomAIaWJQnirilGEV1t/C8zth8rTP71UajtdrXtTDh40Yk+i0N7Hw2wcZ5rS24HiJcFkBkAdB04t89/1O/w1cDnyilFU='))
-handler = WebhookHandler(os.environ.get('2e9e73781d0e66c8e92fed2aa050c3bb'))
+line_bot_api = LineBotApi(os.environ.get('CHANNEL_ACCESS_TOKEN'))
+handler = WebhookHandler(os.environ.get('CHANNEL_SECRET'))
 
 @app.route("/callback", methods=['POST'])
 def callback():
